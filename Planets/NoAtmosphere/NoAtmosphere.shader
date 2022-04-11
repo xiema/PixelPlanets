@@ -16,6 +16,30 @@ uniform int OCTAVES : hint_range(0, 20, 1);
 uniform float seed: hint_range(1, 10);
 uniform float time = 0.0;
 uniform bool should_dither = true;
+uniform float TILES : hint_range(0, 20, 1);
+
+
+vec2 Hash2(vec2 p) {
+	float r = 523.0*sin(dot(p, vec2(53.3158, 43.6143)));
+	return vec2(fract(15.32354 * r), fract(17.25865 * r));
+	
+}
+
+// Tileable cell noise by Dave_Hoskins from shadertoy: https://www.shadertoy.com/view/4djGRh
+float Cells(in vec2 p, in float numCells) {
+	p *= numCells;
+	float d = 1.0e10;
+	for (int xo = -1; xo <= 1; xo++)
+	{
+		for (int yo = -1; yo <= 1; yo++)
+		{
+			vec2 tp = floor(p) + vec2(float(xo), float(yo));
+			tp = p - tp - Hash2(mod(tp, numCells / TILES));
+			d = min(d, dot(tp, tp));
+		}
+	}
+	return sqrt(d);
+}
 
 float rand(vec2 coord) {
 	coord = mod(coord, vec2(1.0,1.0)*round(size));

@@ -112,7 +112,8 @@ process_material = ExtResource( 9 )
 texture = ExtResource( 4 )
 
 [node name="PlanetViewport" type="Viewport" parent="."]
-size = Vector2( 300, 300 )
+size = Vector2( 600, 600 )
+size_override_stretch = true
 transparent_bg = true
 usage = 1
 render_target_v_flip = true
@@ -137,8 +138,8 @@ __meta__ = {
 }
 
 [node name="ViewportTexture" type="TextureRect" parent="PlanetHolder"]
-margin_right = 300.0
-margin_bottom = 300.0
+margin_right = 600.0
+margin_bottom = 600.0
 texture = SubResource( 4 )
 stretch_mode = 3
 
@@ -276,6 +277,7 @@ margin_right = 210.0
 margin_bottom = 114.0
 theme = ExtResource( 2 )
 min_value = 16.0
+max_value = 500.0
 value = 100.0
 
 [node name="Label4" type="Label" parent="Settings/VBoxContainer"]
@@ -767,10 +769,10 @@ __meta__ = {
 }
 
 [node name="ColorPicker" type="ColorPicker" parent="Panel"]
-margin_left = 15.1902
-margin_top = -0.208113
-margin_right = 395.191
-margin_bottom = 400.183
+margin_left = 43.1902
+margin_top = 27.7919
+margin_right = 423.191
+margin_bottom = 428.183
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 2 )
 edit_alpha = false

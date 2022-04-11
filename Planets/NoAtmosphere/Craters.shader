@@ -24,14 +24,14 @@ float circleNoise(vec2 uv) {
     vec2 f = fract(uv);
 	float h = rand(vec2(floor(uv.x),floor(uv_y)));
     float m = (length(f-0.25-(h*0.5)));
-    float r = h*0.25;
+    float r = h*0.13 + 0.09;
     return m = smoothstep(r-.10*r,r,m);
 }
 
 float crater(vec2 uv) {
 	float c = 1.0;
-	for (int i = 0; i < 2; i++) {
-		c *= circleNoise((uv * size) + (float(i+1)+10.) + vec2(time*time_speed,0.0));
+	for (int i = 0; i < 3; i++) {
+		c *= circleNoise((uv * size) + (float(i)*5.70 + 10.) + vec2(time*time_speed,0.0));
 	}
 	return 1.0 - c;
 }

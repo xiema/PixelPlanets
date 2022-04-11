@@ -139,7 +139,7 @@ func _on_ExportPNG_pressed():
 	var image = Image.new()
 	image.create(pixels * planet.relative_scale, pixels * planet.relative_scale, false, Image.FORMAT_RGBA8)
 	var source_xy = 100 - (pixels*(planet.relative_scale-1)*0.5)
-	var source_size = 100*planet.relative_scale
+	var source_size = 512*planet.relative_scale
 	var source_rect = Rect2(source_xy, source_xy,source_size,source_size)
 	image.blit_rect(tex, source_rect, Vector2(0,0))
 	
@@ -162,7 +162,7 @@ func export_spritesheet(sheet_size, progressbar):
 			if index != 0:
 				var image = viewport.get_texture().get_data()
 				var source_xy = 100 - (pixels*(planet.relative_scale-1)*0.5)
-				var source_size = 100*planet.relative_scale
+				var source_size = 200*planet.relative_scale
 				var source_rect = Rect2(source_xy, source_xy,source_size,source_size)
 				var destination = Vector2(x - 1,y) * pixels * planet.relative_scale
 				sheet.blit_rect(image, source_rect, destination)
